@@ -1,5 +1,4 @@
 import unittest
-from typing import List
 from unittest_data_provider import data_provider  # type: ignore
 
 
@@ -10,7 +9,7 @@ class Solution:
     """
 
     @staticmethod
-    def setZeroes(matrix: List[List[int]]) -> None:
+    def setZeroes(matrix: list[list[int]]) -> None:
         """
         Worst case scenario O(m) additional space, the problem asked for O(1)
         """
@@ -35,7 +34,7 @@ class Solution:
                 matrix[idx_row][idx_column] = 0
 
     @staticmethod
-    def setZeroesBetter(matrix: List[List[int]]):
+    def setZeroesBetter(matrix: list[list[int]]):
         """
         O(1) additional space, got the idea from the official solution
         """

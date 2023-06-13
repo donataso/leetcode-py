@@ -13,20 +13,19 @@ class Solution:
 
 
 class SolutionTestCase(unittest.TestCase):
-    class SolutionTestCase(unittest.TestCase):
-        @staticmethod
-        def dataprovider():
-            yield (
-                # params
-                [],
-                # expected
-                [],
-            )
+    @staticmethod
+    def dataprovider():
+        yield (
+            # params
+            [],
+            # expected
+            [],
+        )
 
-        @data_provider(dataprovider)
-        def test_solution(self, params, expected):
-            solution = Solution()
-            self.assertEqual(expected, solution.solve(*params))
+    @data_provider(dataprovider)
+    def test_solution(self, params, expected):
+        solution = Solution()
+        self.assertEqual(expected, solution.solve(*params))
 
 
 if __name__ == '__main__':
