@@ -20,14 +20,14 @@ class Solution:
 
     def hashmap(self, nums1: list[int], nums2: list[int]) -> list[int]:
         result = []
-        hm = defaultdict(int)
+        hm: dict[int, int] = defaultdict(int)
         for n in nums1:
-            hm[str(n)] += 1
+            hm[n] += 1
 
         for n in nums2:
-            if str(n) in hm and hm[str(n)] > 0:
+            if n in hm and hm[n] > 0:
                 result.append(n)
-                hm[str(n)] -= 1
+                hm[n] -= 1
 
         return result
 
