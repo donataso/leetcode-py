@@ -15,18 +15,20 @@ class Solution:
         return self.unsorted(nums)
 
     def unsorted_better(self, nums: list[int]) -> list[list[int]]:
-        res, dups = set(), set()
+        result, dups = set(), set()
         seen: dict[int, int] = {}
         for i, val1 in enumerate(nums):
-            if val1 not in dups:
-                dups.add(val1)
-                for j, val2 in enumerate(nums[i+1:]):
-                    complement = -val1 - val2
-                    if complement in seen and seen[complement] == i:
-                        res.add(tuple(sorted((val1, val2, complement))))
-                    seen[val2] = i
+            if val1 in dups:
+                continue
 
-        return [list(x) for x in res]
+            dups.add(val1)
+            for j, val2 in enumerate(nums[i + 1:]):
+                complement = -val1 - val2
+                if complement in seen and seen[complement] == i:
+                    result.add(tuple(sorted((val1, val2, complement))))
+                seen[val2] = i
+
+        return [list(x) for x in result]
 
     def sorted(self, nums: list[int]) -> list[list[int]]:
         nums.sort()
