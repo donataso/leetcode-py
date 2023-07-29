@@ -8,7 +8,7 @@ class ListNode:
 
     def equals(self, other):
         """
-        :param other: ListNode|None
+        :param other: ListNode | None
         """
         return self.val == other.val and (
             (self.next and other.next and self.next.equals(other.next)) or
