@@ -30,15 +30,29 @@ class Solution:
             for n in range(count_col):
                 if grid[m][n] == self.LAND:
                     num_islands += 1
-                    self.removeIsland(grid, m, n)
+                    # self.removeIslandBfsIterative(grid, m, n)
+                    self.removeIslandRecursive(grid, m, n)
 
         return num_islands
 
-    def removeIsland(self, grid: list[list[str]], m: int, n: int):
+    def removeIslandRecursive(self, grid: list[list[str]], m: int, n: int):
+        if m < 0 or m >= len(grid) \
+                or n < 0 or n >= len(grid[m]) \
+                or grid[m][n] != self.LAND:
+            return
+
+        grid[m][n] = self.WATER
+
+        self.removeIslandRecursive(grid, m, n - 1)
+        self.removeIslandRecursive(grid, m, n + 1)
+        self.removeIslandRecursive(grid, m - 1, n)
+        self.removeIslandRecursive(grid, m + 1, n)
+
+    def removeIslandBfsIterative(self, grid: list[list[str]], m: int, n: int) -> None:
         """
         Remove island using BFS
         """
-        queue: list[list[int]] = [[m, n]]
+        queue: list[tuple[int, int]] = [(m, n)]
         grid[m][n] = self.WATER
         while queue:
             m, n = queue.pop(0)
@@ -50,7 +64,7 @@ class Solution:
                 if 0 <= m_neighbour < len(grid) \
                         and 0 <= n_neighbour < len(grid[m_neighbour]) \
                         and grid[m_neighbour][n_neighbour] == self.LAND:
-                    queue.append([m_neighbour, n_neighbour])
+                    queue.append((m_neighbour, n_neighbour))
 
                     # clear the queued cell
                     grid[m_neighbour][n_neighbour] = self.WATER
