@@ -19,9 +19,13 @@ class Solution:
             for n in range(len(mat[m])):
                 if m + n == len(result):
                     result.append([])
-                result[m + n].append(mat[m][n])
 
-        return [num for i, row in enumerate(result) for num in (reversed(row) if i % 2 == 0 else row)]
+                if (m + n) % 2 == 1:
+                    result[m + n].append(mat[m][n])
+                else:
+                    result[m + n].insert(0, mat[m][n])
+
+        return [num for i, row in enumerate(result) for num in row]
 
     def my_original_solution(self, mat: list[list[int]]) -> list[int]:
         n_rows = len(mat)
