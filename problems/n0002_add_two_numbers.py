@@ -1,6 +1,6 @@
 import unittest
 
-from unittest_data_provider import data_provider  # type: ignore
+from helper.unittest_data_provider import data_provider
 
 from ds.ListNode import ListNode
 

@@ -1,6 +1,3 @@
-from typing import List, Any
-
-
 class TreeNode:
     def __init__(self, val: int = 0, left=None, right=None):
         """

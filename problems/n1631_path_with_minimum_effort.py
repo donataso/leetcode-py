@@ -2,7 +2,7 @@ import unittest
 import heapq
 from typing import TypeAlias
 
-from unittest_data_provider import data_provider  # type: ignore
+from helper.unittest_data_provider import data_provider
 
 Point: TypeAlias = tuple[int, int]
 

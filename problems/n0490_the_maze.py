@@ -2,7 +2,7 @@ import unittest
 from collections import deque
 from typing import TypeAlias, List
 
-from unittest_data_provider import data_provider  # type: ignore
+from helper.unittest_data_provider import data_provider
 
 Point: TypeAlias = tuple[int, int]
 
