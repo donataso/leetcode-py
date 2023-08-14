@@ -29,8 +29,6 @@ class Solution:
 
         return -1
 
-        return boxes[-k] + min_
-
     def heapq_k_size(self, nums: list[int], k: int) -> int:
         heap: list[int] = []
         for n in nums:
