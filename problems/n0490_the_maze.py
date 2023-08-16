@@ -1,6 +1,6 @@
 import unittest
 from collections import deque
-from typing import TypeAlias, List
+from typing import TypeAlias
 
 from helper.unittest_data_provider import data_provider
 
