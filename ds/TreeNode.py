@@ -21,20 +21,16 @@ class TreeNode:
         return str(self.to_list())
 
     @staticmethod
-    def from_list(input: list[int], idx: int = 0, cls=None):
-        """
-        This function does not support null path terminator, as in [1,null,2,3] binary tree.
-        :return: TreeNode | None
-        """
+    def from_list(input: list[int], cls=None):
         cls = cls if cls else TreeNode
-        root = None
 
-        if idx < len(input) and input[idx] is not None:
-            root = cls(input[idx] if input[idx] is not None else 0)
-
-            root.left = cls.from_list(input, 2 * idx + 1, cls=cls)
-            root.right = cls.from_list(input, 2 * idx + 2, cls=cls)
-
+        nodes = [cls(val) if val is not None else None for val in input]
+        kids = nodes[::-1]
+        root = kids.pop()
+        for node in nodes:
+            if node:
+                if kids: node.left = kids.pop()
+                if kids: node.right = kids.pop()
         return root
 
     def to_list(self) -> list[list[int]] | None:
