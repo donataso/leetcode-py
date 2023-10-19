@@ -50,3 +50,12 @@ class ListNode:
             n -= 1
 
         return head
+
+    def length(self) -> int:
+        result = 0
+        head = self
+        while head:
+            result += 1
+            head = head.next
+
+        return result
